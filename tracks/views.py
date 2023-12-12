@@ -85,8 +85,7 @@ def save_changes(request,pk):
         name = request.POST["name-edit"]
         color = request.POST["track-color-edit"]
 
-        print('name',name)
-        sys.stdout.flush()
+       
         #track=edited_track.track
         edited_track.name=name
         edited_track.color=color
