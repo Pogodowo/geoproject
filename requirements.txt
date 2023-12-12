@@ -11,6 +11,7 @@ django-leaflet==0.29.0
 docopt==0.6.2
 GDAL @ file:///C:/Users/lukab/pipwin/GDAL-3.4.3-cp311-cp311-win_amd64.whl
 gpxpy==1.6.1
+gunicorn==21.2.0
 idna==3.4
 Js2Py==0.74
 oauthlib==3.2.2
