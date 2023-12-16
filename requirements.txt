@@ -10,7 +10,7 @@ Django==4.2.7
 django-allauth==0.58.2
 django-leaflet==0.29.0
 docopt==0.6.2
-GDAL @ file:///C:/Users/lukab/pipwin/GDAL-3.4.3-cp311-cp311-win_amd64.whl
+GDAL==3.4.3
 gpxpy==1.6.1
 gunicorn==21.2.0
 idna==3.4
