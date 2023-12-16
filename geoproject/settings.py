@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
-
+import dj_database_url
 
 if os.name == 'nt':
     VENV_BASE = os.environ['VIRTUAL_ENV']
@@ -119,22 +119,17 @@ LEAFLET_CONFIG = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME':  os.environ.get('NAME'),
+#         'USER':os.environ.get('USER'),
+#         'PASSWORD':os.environ.get('PASSWORD'),
+#         'HOST':'localhost',
+#
 #     }
-#}
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME':  os.environ.get('NAME'),
-        'USER':os.environ.get('USER'),
-        'PASSWORD':os.environ.get('PASSWORD'),
-        'HOST':'localhost',
-
-    }
-}
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -185,3 +180,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+DATABASES = {"default": dj_database_url.config(
+    default=DATABASE_URL,
+    conn_max_age=1800 ,
+    engine="django.contrib.gis.db.backends.postgis",
+    #options={'options': '-c postgis'},
+    ),
+             }
+
