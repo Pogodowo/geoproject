@@ -117,3 +117,5 @@ def tracks_dataset(request):
     tracks = GPXTrack.objects.filter(owner=request.user).order_by('pk')
     serialized_tracks = serialize('geojson', tracks)
     return HttpResponse(serialized_tracks, content_type='json')
+
+#testowa zmaiana
